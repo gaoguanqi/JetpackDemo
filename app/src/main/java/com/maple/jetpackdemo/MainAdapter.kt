@@ -49,6 +49,4 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
             tvName.setText(data)
         }
     }
-
-
 }
