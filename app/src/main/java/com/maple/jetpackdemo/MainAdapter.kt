@@ -3,8 +3,8 @@ package com.maple.jetpackdemo
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.maple.jetpackdemo.app.manager.listener.OnItemClickListener
 
@@ -43,7 +43,7 @@ class MainAdapter: RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
      class ViewHolder(itemView: View) :RecyclerView.ViewHolder(itemView){
         val tvName : TextView = itemView.findViewById(R.id.tv_name)
-        val llRoot : LinearLayout = itemView.findViewById(R.id.item_root)
+        val llRoot : CardView = itemView.findViewById(R.id.item_root)
 
         fun setData(pos:Int,data:String?){
             tvName.setText(data)

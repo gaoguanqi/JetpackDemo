@@ -2,6 +2,7 @@ package com.maple.jetpackdemo
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.maple.jetpackdemo.app.base.BaseActivity
@@ -12,7 +13,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
 
-    val list = mutableListOf("DataBinding","Lifecycle")
+    val list = mutableListOf("db","lf")
     var adapter:MainAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,8 +23,12 @@ class MainActivity : BaseActivity() {
     }
 
      fun initData(savedInstanceState: Bundle?) {
-        recycler.layoutManager = LinearLayoutManager(this)
-        recycler.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
+         refreshLayout.setColorSchemeColors(ContextCompat.getColor(this@MainActivity,R.color.colorAccent))
+         refreshLayout.setOnRefreshListener{onRefresh()}
+        recycler.layoutManager = LinearLayoutManager(this@MainActivity)
+         val decoration = DividerItemDecoration(this,DividerItemDecoration.VERTICAL)
+         decoration.setDrawable(this@MainActivity.resources.getDrawable(R.drawable.divider_list_line))
+       // recycler.addItemDecoration(decoration)
         adapter = MainAdapter()
         adapter?.setOnClickListener(object : OnItemClickListener {
             override fun onItemClick(pos: Int, data: Any) {
@@ -35,6 +40,15 @@ class MainActivity : BaseActivity() {
         })
         recycler.adapter = adapter
         adapter?.setData(list)
+    }
+
+    private fun onRefresh() {
+        hideRefresh()
+    }
+
+
+    private fun hideRefresh(){
+        refreshLayout?.isRefreshing = false
     }
 
 }
