@@ -5,9 +5,13 @@ import com.maple.jetpackdemo.R
 import com.maple.jetpackdemo.app.base.BaseActivity
 
 class LifecycleActivity : BaseActivity() {
-    override fun layoutResID(): Int = R.layout.activity_lifecycle
 
-    override fun initData(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_lifecycle)
+    }
+
+    fun initData(savedInstanceState: Bundle?) {
 
     }
 }

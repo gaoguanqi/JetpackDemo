@@ -6,6 +6,11 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+kapt {
+    generateStubs = true
+}
+
+
 android {
     compileSdkVersion 28
     buildToolsVersion '28.0.3'
